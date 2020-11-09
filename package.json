@@ -1,15 +1,22 @@
 {
-    "dependencies": {},
+    "dependencies": {
+        "bootstrap": "^4.5.3",
+        "bootstrap-vue": "^2.19.0",
+        "vue": "^2.6.12"
+    },
     "devDependencies": {
         "@babel/core": "^7.12.3",
         "@babel/preset-env": "^7.12.1",
         "babel-jest": "^26.6.2",
         "babel-loader": "^8.1.0",
+        "css-loader": "^5.0.1",
         "eslint": "^7.12.1",
         "eslint-plugin-jsdoc": "^30.7.6",
         "jest": "^26.6.2",
-        "vue": "^2.6.12",
-        "webpack": "^5.3.2",
+        "sass": "^1.29.0",
+        "sass-loader": "^10.0.5",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.4.0",
         "webpack-cli": "^4.1.0"
     },
     "license": "The Unlicense",
@@ -45,6 +52,6 @@
         ]
     },
     "scripts": {
-        "build": "yarn eslint src tests example && yarn jest && yarn webpack"
+        "build": "yarn eslint src/js && yarn jest && yarn webpack"
     }
 }
