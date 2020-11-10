@@ -1,6 +1,8 @@
-/* global __dirname */
-
 const path = require('path');
+const webpack = require('webpack');
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     'entry': './src/js/app.js',
@@ -8,28 +10,67 @@ module.exports = {
         'path': path.resolve(__dirname, './public/build'),
         'publicPath': '/public/build/',
         'filename': 'app.js'
-    'mode': 'development',
     },
     'module': {
         'rules': [
             {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
-                ],
+                'test': /\.vue$/,
+                'loader': 'vue-loader',
+                //options: {
+                //    loaders: {
+                //        'scss': 'vue-style-loader!css-loader!sass-loader',
+                //        'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                //    }
+                //}
             },
             {
                 'test': /\.js$/,
-                'exclude': [],
-                'use': {
-                    'loader': 'babel-loader',
-                    'options': {
-                        'presets': ['@babel/preset-env']
-                    }
-                }
+                'loader': 'babel-loader',
+                //exclude: /node_modules/
+            },
+            {
+                'test': /\.(c|sc|sa)ss$/,
+                'use': [
+                    'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ],
             }
         ]
-    }
+    },
+    'resolve': {
+        'alias': {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
+    },
+    performance: {
+        hints: false
+    },
+    plugins: [
+        new MiniCssExtractPlugin(),
+        new VueLoaderPlugin()
+    ],
+    devtool: 'eval-source-map'
+}
+
+if (process.env.NODE_ENV === 'production') {
+    module.exports.devtool = '#source-map'
+    // http://vue-loader.vuejs.org/en/workflow/production.html
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
+    ])
 }
