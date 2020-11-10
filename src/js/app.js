@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { BootstrapVue/*, IconsPlugin*/ } from 'bootstrap-vue';
-import App from '../App.vue';
+import App from '../vue/App.vue';
 import '../../node_modules/xyscope/src/vue-xyscope';
 import '../sass/app.scss';
 

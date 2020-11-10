@@ -1,11 +1,6 @@
 <template>
     <div id="app">
         <b-container>
-            <b-button-toolbar>
-                <b-button>Edit</b-button>
-                <b-button>Undo</b-button>
-                <b-button>Redo</b-button>
-            </b-button-toolbar>
             <xyscope
                 ref="scope"
                 limits="-40, -5, 40, 60"
@@ -16,10 +11,12 @@
 </template>
 
 <script>
+import StartStopBtn from './StartStopBtn.vue';
+
 export default {
     name: 'app',
-    data() {
-        return {};
+    components: {
+        StartStopBtn,
     },
 };
 </script>
@@ -29,6 +26,13 @@ export default {
     font-family: sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin-top: 20px;
+    #top-bar {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    canvas {
+        background-color: #000;
+        color: #0f0;
+    }
 }
 </style>
