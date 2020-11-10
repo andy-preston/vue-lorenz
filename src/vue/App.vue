@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <b-container>
+            <b-button-toolbar id="top-bar">
+                <StartStopBtn></StartStopBtn>
+            </b-button-toolbar>
             <xyscope
                 ref="scope"
                 limits="-40, -5, 40, 60"
