@@ -4,11 +4,11 @@ const path = require('path');
 
 module.exports = {
     'entry': './src/js/app.js',
+    'output': {
+        'path': path.resolve(__dirname, './public/build'),
+        'publicPath': '/public/build/',
+        'filename': 'app.js'
     'mode': 'development',
-    output: {
-        path: path.resolve(__dirname, './public/build'),
-        publicPath: '/public/build/',
-        filename: 'app.js'
     },
     'module': {
         'rules': [
