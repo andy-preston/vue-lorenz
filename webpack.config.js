@@ -5,9 +5,10 @@ const path = require('path');
 module.exports = {
     'entry': './src/js/app.js',
     'mode': 'development',
-    'output': {
-        'filename': 'app.js',
-        'path': path.resolve(__dirname, 'build'),
+    output: {
+        path: path.resolve(__dirname, './public/build'),
+        publicPath: '/public/build/',
+        filename: 'app.js'
     },
     'module': {
         'rules': [
