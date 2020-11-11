@@ -107,6 +107,7 @@
         }
     },
     "scripts": {
-        "build": "yarn eslint src/js/*.js src/vue/*.vue && yarn jest && yarn webpack"
+        "lint": "yarn eslint tests/*.js src/js/*.js src/vue/*.vue",
+        "build": "yarn lint && yarn jest && yarn webpack"
     }
 }
