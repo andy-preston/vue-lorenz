@@ -1,5 +1,8 @@
 <template>
-    <b-button :variant="variant" @click="btnClick">
+    <b-button
+        :variant="variant"
+        @click="btnClick"
+    >
         {{ caption }}
     </b-button>
 </template>
@@ -9,7 +12,7 @@ export default {
     data() {
         return {
             'caption': 'Start',
-            'variant': 'success',
+            'variant': 'success'
         };
     },
     'methods': {
@@ -23,8 +26,8 @@ export default {
                 this.variant = 'success';
                 this.$emit('stop');
             }
-        },
-    },
+        }
+    }
 };
 </script>
 

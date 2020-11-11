@@ -28,8 +28,8 @@ export default {
         'startScope': function () {
         },
         'stopScope': function () {
-        },
-    },
+        }
+    }
 };
 </script>
 
