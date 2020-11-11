@@ -1,9 +1,7 @@
 FROM ubuntu:bionic
 
 ENV TERM=linux
-
 ENV DEBIAN_FRONTEND=noninteractive
-
 ENV HOME=/usr/local/src
 
 RUN apt-get update && \
@@ -22,6 +20,9 @@ RUN apt-get update && \
     apt-get -y --purge remove cmdtest && \
     apt-get -y --purge autoremove && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* && \
+    mkdir -p /home/dev
+
+WORKDIR /usr/local/src
 
 CMD [ "bash"]

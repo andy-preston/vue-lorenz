@@ -7,10 +7,14 @@
 
 case $1 in
 'run')
+    USER_ADD="useradd -m -u $(id -u) dev -s /bin/bash"
+    PERMO="chown dev /home/dev"
+    PERMD="chmod 700 /home/dev /home/dev/.ssh"
     docker run -it --rm --network="host" \
-        --volume $HOME:/home/dev \
+        --volume $(pwd):/usr/local/src \
+        --volume $HOME/.ssh:/home/dev/.ssh \
         --name running-$appName $appName \
-        sh -c "useradd -m -u $(id -u) dev -s /bin/bash ; exec su dev"
+        sh -c "$USER_ADD ; $PERMO ; $PERMD ; exec su dev"
     ;;
 'shell')
     docker container exec -it running-$appName bash
