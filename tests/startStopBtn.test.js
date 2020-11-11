@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import { shallowMount } from '@vue/test-utils';
 import StartStopBtn from '../src/vue/StartStopBtn.vue';
 import { BButton } from 'bootstrap-vue';
