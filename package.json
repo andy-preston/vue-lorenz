@@ -9,7 +9,7 @@
         "bootstrap": "^4.5.3",
         "bootstrap-vue": "^2.19.0",
         "vue": "^2.6.12",
-        "xyscope": "file:.//xyscope"
+        "xyscope": "git+ssh://git@gitlab.com:edgeeffect/xyscope.git"
     },
     "devDependencies": {
         "@babel/core": "^7.12.3",

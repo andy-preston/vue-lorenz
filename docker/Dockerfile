@@ -17,16 +17,11 @@ RUN apt-get update && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | \
         apt-key add - && \
     apt-get update && \
-    apt-get -y --no-install-recommends install nodejs yarn && \
+    apt-get -y --no-install-recommends install \
+        nodejs yarn git ssh-client && \
     apt-get -y --purge remove cmdtest && \
     apt-get -y --purge autoremove && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* && \
-    echo "#!/bin/bash" > /usr/local/bin/contstart && \
-    echo "yarn install" >> /usr/local/bin/contstart && \
-    echo "yarn build"  >> /usr/local/bin/contstart && \
-    echo "exec bash" >> /usr/local/bin/contstart
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-WORKDIR /usr/local/src
-
-CMD [ "bash", "/usr/local/bin/contstart"]
+CMD [ "bash"]

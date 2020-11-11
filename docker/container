@@ -8,8 +8,9 @@
 case $1 in
 'run')
     docker run -it --rm --network="host" \
-        --user $(id -u):$(id -g) --volume $(pwd):/usr/local/src \
-        --name running-$appName $appName
+        --volume $HOME:/home/dev \
+        --name running-$appName $appName \
+        sh -c "useradd -m -u $(id -u) dev -s /bin/bash ; exec su dev"
     ;;
 'shell')
     docker container exec -it running-$appName bash
