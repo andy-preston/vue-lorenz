@@ -1,5 +1,5 @@
 <template>
-    <b-button :variant="variant" v-on:click="btnClick">
+    <b-button :variant="variant" @click="btnClick">
         {{ caption }}
     </b-button>
 </template>

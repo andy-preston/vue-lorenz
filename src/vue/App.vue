@@ -7,7 +7,7 @@
             <xyscope
                 ref="scope"
                 limits="-40, -5, 40, 60"
-                v-on:request-data="requestData"
+                @request-data="requestData"
             ></xyscope>
         </b-container>
     </div>
@@ -17,7 +17,7 @@
 import StartStopBtn from './StartStopBtn.vue';
 
 export default {
-    name: 'app',
+    name: 'App',
     components: {
         StartStopBtn,
     },
