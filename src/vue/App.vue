@@ -6,6 +6,18 @@
                     @start="startScope"
                     @stop="stopScope"
                 ></StartStopBtn>
+                <VariableBox
+                    id="xBox"
+                    label="x"
+                ></VariableBox>
+                <VariableBox
+                    id="yBox"
+                    label="y"
+                ></VariableBox>
+                <VariableBox
+                    id="zBox"
+                    label="z"
+                ></VariableBox>
             </b-button-toolbar>
             <xyscope
                 ref="scope"
@@ -18,11 +30,13 @@
 
 <script>
 import StartStopBtn from './StartStopBtn.vue';
+import VariableBox from './VariableBox.vue';
 
 export default {
     name: 'App',
     components: {
         StartStopBtn,
+        VariableBox
     },
     'methods': {
         'startScope': function () {
