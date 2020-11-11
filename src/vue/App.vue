@@ -2,7 +2,10 @@
     <div id="app">
         <b-container>
             <b-button-toolbar id="top-bar">
-                <StartStopBtn></StartStopBtn>
+                <StartStopBtn
+                    @start="startScope"
+                    @stop="stopScope"
+                ></StartStopBtn>
             </b-button-toolbar>
             <xyscope
                 ref="scope"
@@ -20,6 +23,12 @@ export default {
     name: 'App',
     components: {
         StartStopBtn,
+    },
+    'methods': {
+        'startScope': function () {
+        },
+        'stopScope': function () {
+        },
     },
 };
 </script>

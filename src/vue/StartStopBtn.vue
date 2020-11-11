@@ -17,9 +17,11 @@ export default {
             if (this.caption == 'Start') {
                 this.caption = 'Stop';
                 this.variant = 'danger';
+                this.$emit('start');
             } else {
                 this.caption = 'Start';
                 this.variant = 'success';
+                this.$emit('stop');
             }
         },
     },
