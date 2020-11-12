@@ -60,10 +60,15 @@ export default {
     font-family: sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
     #top-bar {
         margin-top: 10px;
         margin-bottom: 5px;
+        > * {
+            margin-right: 5px;
+        }
     }
+
     canvas {
         background-color: #000;
         color: #0f0;
