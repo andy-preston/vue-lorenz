@@ -51,6 +51,8 @@ export default {
         'startScope': function () {
         },
         'stopScope': function () {
+        },
+        'requestData': function () {
         }
     }
 };
