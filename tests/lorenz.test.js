@@ -24,7 +24,7 @@ test('It returns (non deterministic) results within the expected range', () => {
     const lorenz = Lorenz();
     const min = { 'x': -25, 'y': -30, 'z': 0 };
     const max = { 'x': 25, 'y': 30, 'z': 60 };
-    for (let t = 0; t < 100000; t++) {
+    for (let t = 0; t < 1000; t++) {
         var result = lorenz.nextValue();
         Object.keys(result).forEach(function (axis) {
             expect(result[axis]).toBeLessThan(max[axis]);
