@@ -7,6 +7,7 @@
                     label="rho"
                     min="14"
                     max="28"
+                    initial-value="28"
                 ></AdjustBox>
 
                 <StartStopBtn

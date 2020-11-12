@@ -30,11 +30,17 @@ export default {
         'max': {
             'type': Number,
             'required': true
+        },
+        'initial-Value': {
+            // TODO: a prop validator can't see other props.
+            // But this value is dependent on the min and max props.
+            'type': Number,
+            'required': true
         }
     },
     data() {
         return {
-            'value': 0
+            'value': this.initialValue
         };
     }
 };
