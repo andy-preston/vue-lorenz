@@ -10,6 +10,12 @@ export const Lorenz = (startX, startY, startZ) => {
     const beta = 8.0 / 3.0;
     const dt = 0.015;
 
+    /**
+     * Return the result of the last iteration or the initial conditions
+     *
+     * @param {string} spec undefined = all values 'xz' = just x and z
+     * @returns {object} x,y,z as numbers - depending on resultSpec
+     */
     const get = (spec) => {
         if (typeof spec == 'undefined') {
             return Object.assign(cart);
@@ -26,11 +32,21 @@ export const Lorenz = (startX, startY, startZ) => {
     };
 
     return {
-        /* get is probably only exposed for testing, you will usually get a
-         * result through `nextValue
+        /**
+         * `get` is probably only exposed for testing, you will usually get a
+         * result through `nextValue`
+         *
+         * @param {string} spec undefined = all values 'xz' = just x and z
+         * @returns {object} x,y,z as numbers - depending on resultSpec
          */
         'get': get,
 
+        /**
+         * Do the next iteration and return a value
+         *
+         * @param {string} resultSpec undefined = all values 'xz' = just x and z
+         * @returns {object} x,y,z as numbers - depending on resultSpec
+         */
         'nextValue': (resultSpec) => {
             const newCart = {
                 'x': cart.x + dt * (sigma * (cart.y - cart.x)),
