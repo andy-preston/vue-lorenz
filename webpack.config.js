@@ -37,14 +37,14 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js'
         }
     },
-    performance: {
-        hints: false
+    'performance': {
+        'hints': false
     },
-    plugins: [
+    'plugins': [
         new MiniCssExtractPlugin(),
         new VueLoaderPlugin()
     ],
-    devtool: 'eval-source-map'
+    'devtool': 'eval-source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -53,17 +53,17 @@ if (process.env.NODE_ENV === 'production') {
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: '"production"'
+                'NODE_ENV': '"production"'
             }
         }),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                warnings: false
+            'sourceMap': true,
+            'compress': {
+                'warnings': false
             }
         }),
         new webpack.LoaderOptionsPlugin({
-            minimize: true
+            'minimize': true
         })
     ])
 }
