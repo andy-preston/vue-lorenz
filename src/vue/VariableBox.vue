@@ -1,7 +1,7 @@
 <template>
-    <b-card>
+    <el-card>
         {{ label }}:&nbsp;{{ value }}
-    </b-card>
+    </el-card>
 </template>
 
 <script>

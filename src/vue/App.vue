@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <b-container>
-            <b-button-toolbar id="top-bar">
+        <el-container>
+            <el-header id="top-bar">
                 <AdjustBox
                     id="rhoBox"
                     label="rho"
@@ -29,13 +29,15 @@
                     id="zBox"
                     label="z"
                 ></VariableBox>
-            </b-button-toolbar>
-            <xyscope
-                ref="scope"
-                limits="-40, -5, 40, 60"
-                @request-data="requestData"
-            ></xyscope>
-        </b-container>
+            </el-header>
+            <el-main>
+                <xyscope
+                    ref="scope"
+                    limits="-40, -5, 40, 60"
+                    @request-data="requestData"
+                ></xyscope>
+            </el-main>
+        </el-container>
     </div>
 </template>
 

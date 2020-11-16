@@ -1,15 +1,14 @@
 <template>
-    <b-form-group>
-        <label for="input">{{ label }}: {{ value }}</label>
-        <b-form-input
+    <div>
+        <label for="input">{{ label }}</label>
+        <el-input-number
             id="input"
             v-model="value"
-            type="range"
             :min="min"
             :max="max"
         >
-        </b-form-input>
-    </b-form-group>
+        </el-input-number>
+    </div>
 </template>
 
 <script>

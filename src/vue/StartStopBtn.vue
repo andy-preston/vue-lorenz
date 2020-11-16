@@ -1,10 +1,10 @@
 <template>
-    <b-button
-        :variant="variant"
+    <el-button
+        :type="variant"
         @click="btnClick"
     >
         {{ caption }}
-    </b-button>
+    </el-button>
 </template>
 
 <script>

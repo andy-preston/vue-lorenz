@@ -10,29 +10,38 @@ module.exports = {
     'entry': './src/js/app.js',
     'output': {
         'path': path.resolve(__dirname, './public/build'),
-        'publicPath': '/public/build/',
+        'publicPath': '',
         'filename': 'app.js'
     },
     'module': {
-        'rules': [
-            {
-                'test': /\.vue$/,
-                'loader': 'vue-loader',
-            },
-            {
-                'test': /\.js$/,
-                'loader': 'babel-loader',
-            },
-            {
-                'test': /\.(c|sc|sa)ss$/,
-                'use': [
-                    'vue-style-loader',
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader'
-                ],
-            }
-        ]
+        'rules': [{
+            'test': /\.(woff|ttf)$/,
+            'use': [{
+                'loader': 'file-loader',
+                'options': {
+                    'name': '[name].[ext]',
+                    'outputPath': 'fonts/'
+                }
+            }]
+        }, {
+            'test': /\.vue$/,
+            'use': [{
+                'loader': 'vue-loader'
+            }]
+        }, {
+            'test': /\.js$/,
+            'use': [{
+                'loader': 'babel-loader'
+            }]
+        }, {
+            'test': /\.(c|sc|sa)ss$/,
+            'use': [
+                'vue-style-loader',
+                MiniCssExtractPlugin.loader,
+                'css-loader',
+                'sass-loader'
+            ]
+        }]
     },
     'resolve': {
         'alias': {

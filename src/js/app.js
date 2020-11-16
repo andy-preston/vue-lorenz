@@ -1,11 +1,10 @@
 import Vue from 'vue';
-import { BootstrapVue/*, IconsPlugin*/ } from 'bootstrap-vue';
+import ElementUI from 'element-ui';
 import App from '../vue/App.vue';
 import '../../node_modules/xyscope/src/vue-xyscope';
 import '../sass/app.scss';
 
-Vue.use(BootstrapVue);
-//Vue.use(IconsPlugin);
+Vue.use(ElementUI);
 
 new Vue({
     el: '#app',
