@@ -97,7 +97,7 @@
         }
     },
     "scripts": {
-        "lint": "yarn eslint tests/*.js src/js/*.js src/vue/*.vue",
+        "lint": "yarn eslint *.js tests/*.js src/js/*.js src/vue/*.vue",
         "build": "yarn lint && yarn jest && yarn webpack"
     }
 }
