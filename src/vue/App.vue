@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-        <Toolbar></Toolbar>
+        <Toolbar
+            ref="toolbar"
+        ></Toolbar>
         <TheScope
             ref="scope"
             @request-data="requestData"
