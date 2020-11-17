@@ -8,23 +8,26 @@
                 ></RhoInput>
 
                 <StartStopBtn
-                    @start="startScope"
+                    @start="$emit('start')"
                     @stop="$emit('stop')"
                 ></StartStopBtn>
 
                 <VariableBox
-                    id="xBox"
+                    ref="xBox"
                     label="x"
+                    value=""
                 ></VariableBox>
 
                 <VariableBox
-                    id="yBox"
+                    ref="yBox"
                     label="y"
+                    value=""
                 ></VariableBox>
 
                 <VariableBox
-                    id="zBox"
+                    ref="zBox"
                     label="z"
+                    value=""
                 ></VariableBox>
             </div>
         </el-col>
@@ -39,8 +42,10 @@ import VariableBox from './VariableBox.vue';
 export default {
     'components': { StartStopBtn, VariableBox, RhoInput },
     'methods': {
-        'startScope': function () {
-            console.log('start');
+        'nextValue': function (nextValue) {
+            this.$refs.xBox.value = nextValue.x;
+            this.$refs.yBox.value = nextValue.y;
+            this.$refs.zBox.value = nextValue.z;
         },
         'rho': function () {
             return this.$refs.rhoInput.val;
