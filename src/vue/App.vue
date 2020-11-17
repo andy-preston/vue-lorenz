@@ -1,26 +1,20 @@
 <template>
     <div id="app">
         <Toolbar></Toolbar>
-        <el-row>
-            <el-col :span="24">
-                <div class="grid-content">
-                    <xyscope
-                        ref="scope"
-                        limits="-40, -5, 40, 60"
-                        @request-data="requestData"
-                    ></xyscope>
-                </div>
-            </el-col>
-        </el-row>
+        <TheScope
+            ref="scope"
+            @request-data="requestData"
+        ></TheScope>
     </div>
 </template>
 
 <script>
 import Toolbar from './Toolbar.vue';
+import TheScope from './TheScope.vue';
 
 export default {
     name: 'App',
-    components: { Toolbar },
+    components: { Toolbar, TheScope },
     'methods': {
         'requestData': function () {
             console.log('request-data');
@@ -30,10 +24,4 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-    canvas {
-        background-color: #000;
-        color: #0f0;
-    }
-}
 </style>
