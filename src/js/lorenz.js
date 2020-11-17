@@ -1,4 +1,4 @@
-export const Lorenz = (startX, startY, startZ) => {
+export default (startX, startY, startZ) => {
     var cart = {
         'x': typeof startX != 'undefined' ? startX : 2.0,
         'y': typeof startY != 'undefined' ? startY : 3.0,
@@ -6,7 +6,7 @@ export const Lorenz = (startX, startY, startZ) => {
     }
 
     const sigma = 10.0;
-    const rho = 28.0;
+    var rho = 28.0;
     const beta = 8.0 / 3.0;
     const dt = 0.015;
 
@@ -40,6 +40,13 @@ export const Lorenz = (startX, startY, startZ) => {
          * @returns {object} x,y,z as numbers - depending on resultSpec
          */
         'get': get,
+
+        /**
+         * @param {number} newRho new value of rho
+         */
+        'rho': (newRho) => {
+            rho = newRho;
+        },
 
         /**
          * Do the next iteration and return a value

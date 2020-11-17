@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { Lorenz } from '../src/js/lorenz';
+import Lorenz from '../src/js/lorenz';
 
 test('It works with default starting coordinates', () => {
     const lorenz = Lorenz();
