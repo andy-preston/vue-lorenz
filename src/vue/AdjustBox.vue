@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <span>
         <label for="input">{{ label }}</label>
         <el-input-number
             id="input"
@@ -8,7 +8,7 @@
             :max="max"
         >
         </el-input-number>
-    </div>
+    </span>
 </template>
 
 <script>
@@ -45,5 +45,5 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 </style>

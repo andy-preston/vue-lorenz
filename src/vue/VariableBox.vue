@@ -1,7 +1,7 @@
 <template>
-    <el-card>
+    <el-tag>
         {{ label }}:&nbsp;{{ value }}
-    </el-card>
+    </el-tag>
 </template>
 
 <script>
@@ -24,5 +24,5 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 </style>
