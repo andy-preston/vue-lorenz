@@ -10,17 +10,13 @@
 
 case $1 in
 'run')
-    # user `dev` inside the container is "the current user" outside.
-    # For the benefit of the bind mount
-    USER_ADD="useradd -m -u $(id -u) dev -s /bin/bash"
-    OWN_DIR="chown dev /home/dev /home/dev/.ssh"
-    # TODO: The `exec su dev` can result in the container terminating
-    # on SOME error states conditions.
-    docker run -it --rm --network="host" \
+    docker run \
+        --rm \
+        --interactive --tty \
+        --publish 80:9000 \
         --volume $(pwd):/usr/local/src \
-        --volume $HOME/.ssh:/home/dev/.ssh \
-        --name running-$appName $appName \
-        sh -c "$USER_ADD ; $OWN_DIR ; exec su dev"
+        --volume $HOME/.ssh:/root/.ssh \
+        --name running-$appName $appName
     ;;
 'shell')
     docker container exec -it running-$appName bash

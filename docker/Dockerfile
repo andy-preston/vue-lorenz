@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 ENV TERM=linux
 ENV DEBIAN_FRONTEND=noninteractive
-ENV HOME=/usr/local/src
+ENV HOME=/root/
 
 RUN apt-get update && \
     apt-get -y --no-install-recommends install \
@@ -35,5 +35,6 @@ RUN apt-get update && \
     chmod 700 /home/dev /home/dev/.ssh
 
 WORKDIR /usr/local/src
+EXPOSE 9000
 
-CMD [ "bash"]
+CMD ["./node_modules/.bin/webpack", "serve"]
