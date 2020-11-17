@@ -3,7 +3,7 @@
         v-model="val"
         :min="14"
         :max="28"
-        @change="$emit('change')"
+        @change="$emit('change', $event)"
     >
     </el-input-number>
 </template>
@@ -17,6 +17,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss">
-</style>

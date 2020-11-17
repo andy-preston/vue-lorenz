@@ -2,10 +2,7 @@
     <el-row id="toolbar">
         <el-col :span="24">
             <div class="grid-content">
-                <RhoInput
-                    ref="rhoInput"
-                    @change="emit('rho-change')"
-                ></RhoInput>
+                <RhoInput @change="$emit('rho-change', $event)"></RhoInput>
 
                 <StartStopBtn
                     @start="$emit('start')"
@@ -13,21 +10,18 @@
                 ></StartStopBtn>
 
                 <VariableBox
-                    ref="xBox"
                     label="x"
-                    value=""
+                    :value="nextValue.x"
                 ></VariableBox>
 
                 <VariableBox
-                    ref="yBox"
                     label="y"
-                    value=""
+                    :value="nextValue.y"
                 ></VariableBox>
 
                 <VariableBox
-                    ref="zBox"
                     label="z"
-                    value=""
+                    :value="nextValue.z"
                 ></VariableBox>
             </div>
         </el-col>
@@ -41,14 +35,15 @@ import VariableBox from './VariableBox.vue';
 
 export default {
     'components': { StartStopBtn, VariableBox, RhoInput },
-    'methods': {
-        'nextValue': function (nextValue) {
-            this.$refs.xBox.value = nextValue.x;
-            this.$refs.yBox.value = nextValue.y;
-            this.$refs.zBox.value = nextValue.z;
-        },
-        'rho': function () {
-            return this.$refs.rhoInput.val;
+    'props': {
+        'nextValue': {
+            'type': Object,
+            'required': false,
+            'default': {
+                'x': '',
+                'y': '',
+                'z': ''
+            }
         }
     }
 };

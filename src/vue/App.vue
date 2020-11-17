@@ -2,6 +2,7 @@
     <div id="app">
         <Toolbar
             ref="toolbar"
+            @rho-change="rhoChange"
         ></Toolbar>
         <TheScope
             ref="scope"
@@ -18,12 +19,12 @@ export default {
     name: 'App',
     components: { Toolbar, TheScope },
     'methods': {
+        'rhoChange': function (newValue) {
+            lorenz.rho(newValue);
+        },
         'requestData': function () {
             console.log('request-data');
         }
     }
 };
 </script>
-
-<style lang="scss">
-</style>
