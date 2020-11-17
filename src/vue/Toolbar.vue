@@ -2,17 +2,14 @@
     <el-row id="toolbar">
         <el-col :span="24">
             <div class="grid-content">
-                <AdjustBox
-                    id="rhoBox"
-                    label="rho"
-                    min="14"
-                    max="28"
-                    initial-value="28"
-                ></AdjustBox>
+                <RhoInput
+                    ref="rhoInput"
+                    @change="emit('rho-change')"
+                ></RhoInput>
 
                 <StartStopBtn
                     @start="startScope"
-                    @stop="stopScope"
+                    @stop="$emit('stop')"
                 ></StartStopBtn>
 
                 <VariableBox
@@ -36,17 +33,17 @@
 
 <script>
 import StartStopBtn from './StartStopBtn.vue';
+import RhoInput from './RhoInput.vue';
 import VariableBox from './VariableBox.vue';
-import AdjustBox from './AdjustBox.vue';
 
 export default {
-    components: { StartStopBtn, VariableBox, AdjustBox },
+    'components': { StartStopBtn, VariableBox, RhoInput },
     'methods': {
         'startScope': function () {
             console.log('start');
         },
-        'stopScope': function () {
-            console.log('stop');
+        'rho': function () {
+            return this.$refs.rhoInput.val;
         }
     }
 };
