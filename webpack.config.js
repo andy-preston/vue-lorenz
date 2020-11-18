@@ -8,11 +8,14 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     'entry': './src/js/app.js',
+    'mode': process.env.WEBPACK_SERVE ? 'development' : 'production',
     'devServer': {
         'contentBase': path.join(__dirname, 'public'),
+        'publicPath': '/build/',
         'compress': true,
         'port': 9000,
-        'host': '0.0.0.0'
+        'host': '0.0.0.0',
+        'sockPort': 80
     },
     'output': {
         'path': path.resolve(__dirname, './public/build'),
