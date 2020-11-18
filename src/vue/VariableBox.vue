@@ -1,5 +1,5 @@
 <template>
-    <el-tag>
+    <el-tag class="var-box">
         {{ label }}:&nbsp;{{ value }}
     </el-tag>
 </template>
@@ -20,4 +20,8 @@ export default {
 </script>
 
 <style lang="scss">
+.var-box {
+    max-width: 140px;
+    min-width: 140px;
+}
 </style>
