@@ -5,6 +5,7 @@ const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 
 module.exports = {
     'entry': './src/js/app.js',
@@ -62,7 +63,20 @@ module.exports = {
     },
     'plugins': [
         new MiniCssExtractPlugin(),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new WebpackShellPluginNext({
+            onBeforeBuild: {
+                scripts: ['yarn lint'],
+                blocking: true,
+                parallel: false
+            },
+            onAfterDone: {
+                scripts: ['yarn jest'],
+                blocking: false,
+                parallel: true
+            }
+        })
+
     ],
     'devtool': 'eval-source-map'
 }
