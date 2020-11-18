@@ -37,4 +37,4 @@ RUN apt-get update && \
 WORKDIR /usr/local/src
 EXPOSE 9000
 
-CMD ["./node_modules/.bin/webpack", "serve"]
+CMD ["sh", "-c", "./node_modules/.bin/webpack serve"]
