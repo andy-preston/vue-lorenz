@@ -16,7 +16,7 @@
 export default {
     'methods': {
         'nextValue': function (nextValue) {
-            this.$refs.scope.pushData(nextValue);
+            this.$refs.scope.pushData({ 'x': nextValue.x, 'y': nextValue.z });
         }
     }
 };
