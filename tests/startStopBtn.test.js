@@ -1,17 +1,16 @@
 /* eslint-env jest */
 
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
+import Vue from 'vue';
+import ElementUI from 'element-ui';
 import StartStopBtn from '../src/vue/StartStopBtn.vue';
-import { BButton } from 'bootstrap-vue';
+
+Vue.use(ElementUI);
 
 let wrapper;
 
 beforeEach(() => {
-    wrapper = shallowMount(StartStopBtn, {
-        'stubs': {
-            'b-button': BButton
-        }
-    });
+    wrapper = mount(StartStopBtn);
 });
 
 afterEach(() => {
