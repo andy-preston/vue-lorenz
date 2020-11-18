@@ -2,7 +2,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const WebpackShellPluginNext = require('webpack-shell-plugin-next');
@@ -10,6 +9,10 @@ const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 module.exports = {
     'entry': './src/js/app.js',
     'mode': process.env.WEBPACK_SERVE ? 'development' : 'production',
+    'devtool': 'eval-source-map',
+    'resolve': { 'alias': { 'vue$': 'vue/dist/vue.esm.js' } },
+    'performance': { 'hints': false },
+
     'devServer': {
         'contentBase': path.join(__dirname, 'public'),
         'publicPath': '/build/',
@@ -18,11 +21,13 @@ module.exports = {
         'host': '0.0.0.0',
         'sockPort': 80
     },
+
     'output': {
         'path': path.resolve(__dirname, './public/build'),
         'publicPath': '',
         'filename': 'app.js'
     },
+
     'module': {
         'rules': [{
             'test': /\.(woff|ttf)$/,
@@ -35,14 +40,10 @@ module.exports = {
             }]
         }, {
             'test': /\.vue$/,
-            'use': [{
-                'loader': 'vue-loader'
-            }]
+            'use': [{ 'loader': 'vue-loader' }]
         }, {
             'test': /\.js$/,
-            'use': [{
-                'loader': 'babel-loader'
-            }]
+            'use': [{ 'loader': 'babel-loader' }]
         }, {
             'test': /\.(c|sc|sa)ss$/,
             'use': [
@@ -53,17 +54,12 @@ module.exports = {
             ]
         }]
     },
-    'resolve': {
-        'alias': {
-            'vue$': 'vue/dist/vue.esm.js'
-        }
-    },
-    'performance': {
-        'hints': false
-    },
+
     'plugins': [
         new MiniCssExtractPlugin(),
+
         new VueLoaderPlugin(),
+
         new WebpackShellPluginNext({
             onBeforeBuild: {
                 scripts: ['yarn lint'],
@@ -76,9 +72,7 @@ module.exports = {
                 parallel: true
             }
         })
-
-    ],
-    'devtool': 'eval-source-map'
+    ]
 }
 
 if (process.env.NODE_ENV === 'production') {
