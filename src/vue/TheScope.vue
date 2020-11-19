@@ -22,10 +22,8 @@ export default {
 };
 </script>
 
-<!-- TODO: canvas should have a specific class or id to map this style to -->
-
 <style lang="scss">
-canvas {
+#canvas {
     background-color: #000;
     color: #0f0;
 }
