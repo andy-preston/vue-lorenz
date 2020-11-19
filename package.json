@@ -72,6 +72,10 @@
                 "error",
                 "never"
             ],
+            "operator-linebreak": [
+                "error",
+                "after"
+            ],
             "vue/html-indent": [
                 "error",
                 4
