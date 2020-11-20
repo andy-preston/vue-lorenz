@@ -2,18 +2,21 @@
     <el-row>
         <el-col :span="24">
             <div class="grid-content">
-                <xyscope
+                <x-y-scope
                     ref="scope"
                     limits="-40, -5, 40, 60"
                     @request-data="$emit('request-data')"
-                ></xyscope>
+                ></x-y-scope>
             </div>
         </el-col>
     </el-row>
 </template>
 
 <script>
+import XYScope from 'xyscope/src/XYScope.vue';
+
 export default {
+    'components': { XYScope },
     'mounted': function () {
         window.addEventListener('resize', this.onResize);
         this.onResize();
@@ -37,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss">
-#canvas {
+.xyscope-canvas {
     background-color: #000;
     color: #0f0;
 }
