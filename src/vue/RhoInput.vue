@@ -1,7 +1,7 @@
 <template>
     <el-input-number
         v-model="val"
-        :min="14"
+        :min="12"
         :max="28"
         @change="$emit('change', $event)"
     >
