@@ -22,9 +22,17 @@ export default {
         this.onResize();
     },
     'methods': {
+        /**
+         * @function nextValue Insert the next value into the scope
+         * @param {object} nextValue with 'x', 'y' and 'z' properties
+         */
         'nextValue': function (nextValue) {
             this.$refs.scope.pushData({ 'x': nextValue.x, 'y': nextValue.z });
         },
+
+        /**
+         * @function onResize Force the scope to fill the remaining screen
+         */
         'onResize': function () {
             // Force the scope canvas to fill the ramaining screen under the
             // toolbar
