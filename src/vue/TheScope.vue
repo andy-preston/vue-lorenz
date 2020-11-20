@@ -1,7 +1,10 @@
 <template>
     <el-row>
         <el-col :span="24">
-            <div class="grid-content">
+            <div
+                ref="container"
+                class="grid-content"
+            >
                 <x-y-scope
                     ref="scope"
                     limits="-40, -5, 40, 60"
@@ -34,13 +37,19 @@ export default {
          * @function onResize Force the scope to fill the remaining screen
          */
         'onResize': function () {
-            // Force the scope canvas to fill the ramaining screen under the
-            // toolbar
-            const theCanvas = document.getElementById('canvas');
-            theCanvas.style.height = (
-                window.innerHeight - 16 -
-                theCanvas.getBoundingClientRect().top
+            var container = this.$refs.container;
+            // The "16" here is the two margins on the top level components
+            // see App.vue <style> - The OOP Gods would be happier if this
+            // value was "better derived"
+            const height = (
+                window.innerHeight - 16 - container.getBoundingClientRect().top
             ) + 'px';
+            do {
+                container.style.height = height;
+                container = container.parentElement;
+                // The while condition here will anger the OOP Gods
+                // As we're referencing a DIV that's outside this component
+            } while (container.id != 'app');
             this.$refs.scope.rescale();
         }
     }

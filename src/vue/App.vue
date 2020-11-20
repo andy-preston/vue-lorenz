@@ -51,3 +51,23 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+$margin-size: 8px;
+
+html,
+body,
+#app {
+    height: 100vh;
+    margin: 0;
+}
+
+.el-row {
+    margin-left: $margin-size;
+    margin-right: $margin-size;
+    margin-top: $margin-size;
+    &:last-of-type {
+        margin-bottom: $margin-size;
+    }
+}
+</style>
