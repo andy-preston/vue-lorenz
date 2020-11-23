@@ -68,11 +68,10 @@ export default {
 
 <style lang="scss">
 .toolbar {
-    margin-left: 8px;
-    margin-right: 8px;
-    margin-top: 8px;
+    margin: 0;
+    padding: 8px;
     .el-form-item {
-        margin-bottom: 8px;
+        margin: 0;
     }
 }
 </style>

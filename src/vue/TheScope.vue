@@ -1,18 +1,14 @@
 <template>
-    <el-row>
-        <el-col :span="24">
-            <div
-                ref="container"
-                class="grid-content"
-            >
-                <x-y-scope
-                    ref="scope"
-                    limits="-40, -5, 40, 60"
-                    @request-data="$emit('request-data')"
-                ></x-y-scope>
-            </div>
-        </el-col>
-    </el-row>
+    <div
+        ref="container"
+        class="scope-container"
+    >
+        <x-y-scope
+            ref="scope"
+            limits="-40, -5, 40, 60"
+            @request-data="$emit('request-data')"
+        ></x-y-scope>
+    </div>
 </template>
 
 <script>
@@ -38,18 +34,9 @@ export default {
          */
         'onResize': function () {
             var container = this.$refs.container;
-            // The "16" here is the two margins on the top level components
-            // see App.vue <style> - The OOP Gods would be happier if this
-            // value was "better derived"
-            const height = (
-                window.innerHeight - 16 - container.getBoundingClientRect().top
+            container.style.height = (
+                window.innerHeight - 8 - container.getBoundingClientRect().top
             ) + 'px';
-            do {
-                container.style.height = height;
-                container = container.parentElement;
-                // The while condition here will anger the OOP Gods
-                // As we're referencing a DIV that's outside this component
-            } while (container.id != 'app');
             this.$refs.scope.rescale();
         }
     }
@@ -57,6 +44,12 @@ export default {
 </script>
 
 <style lang="scss">
+.scope-container {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
 .xyscope-canvas {
     background-color: #000;
     color: #0f0;
