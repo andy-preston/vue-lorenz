@@ -4,17 +4,31 @@ import Lorenz from '../src/js/lorenz';
 
 test('It works with default starting coordinates', () => {
     const lorenz = Lorenz();
-    expect(lorenz.get('xyz')).toEqual({ 'x': 2.0, 'y': 3.0, 'z': 4.0 });
+    expect(lorenz.get('xyz')).toEqual({ 'x': -6.0, 'y': -1.0, 'z': 20.0 });
+    expect(lorenz.rho()).toEqual(28);
 });
 
 test('It accepts starting coordinates', () => {
-    const lorenz = Lorenz(2.5, 3.5, 4.5);
-    expect(lorenz.get('xyz')).toEqual({ 'x': 2.5, 'y': 3.5, 'z': 4.5 });
+    const testXyz = { 'x': 2.5, 'y': 3.5, 'z': 4.5 };
+    const lorenz = Lorenz(testXyz);
+    expect(lorenz.get('xyz')).toEqual(testXyz);
 });
 
 test('It returns partial results', () => {
     const lorenz = Lorenz();
-    expect(lorenz.get('xz')).toEqual({ 'x': 2.0, 'z': 4.0 });
+    expect(lorenz.get('xz')).toEqual({ 'x': -6.0, 'z': 20.0 });
+});
+
+test('It accepts an initial value of Rho', () => {
+    const lorenz = Lorenz({ 'rho': 12 });
+    expect(lorenz.rho()).toEqual(12);
+});
+
+test('Once constructed, we can update Rho', () => {
+    const lorenz = Lorenz();
+    expect(lorenz.rho()).toEqual(28);
+    lorenz.rho(14);
+    expect(lorenz.rho()).toEqual(14);
 });
 
 test('It returns (non deterministic) results within the expected range', () => {

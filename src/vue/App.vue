@@ -18,13 +18,16 @@ import Toolbar from './Toolbar.vue';
 import TheScope from './TheScope.vue';
 import Lorenz from '../js/lorenz';
 
-const lorenz = Lorenz();
+var lorenz;
 var running = false;
 var waitingForData = false;
 
 export default {
     name: 'App',
     components: { Toolbar, TheScope },
+    'mounted': function () {
+        lorenz = Lorenz({ 'rho': this.$refs.toolbar.rho() });
+    },
     'methods': {
         'getData': function () {
             if (running && waitingForData) {
@@ -53,21 +56,10 @@ export default {
 </script>
 
 <style lang="scss">
-$margin-size: 8px;
-
 html,
 body,
 #app {
     height: 100vh;
     margin: 0;
-}
-
-.el-row {
-    margin-left: $margin-size;
-    margin-right: $margin-size;
-    margin-top: $margin-size;
-    &:last-of-type {
-        margin-bottom: $margin-size;
-    }
 }
 </style>

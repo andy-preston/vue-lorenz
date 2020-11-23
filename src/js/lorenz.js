@@ -1,14 +1,21 @@
-export default (startX, startY, startZ) => {
-    var cart = {
-        'x': typeof startX != 'undefined' ? startX : 2.0,
-        'y': typeof startY != 'undefined' ? startY : 3.0,
-        'z': typeof startZ != 'undefined' ? startZ : 4.0
-    }
-
+/**
+ * @param {object} init x,y,z,rho
+ * @returns {object} Lorenz attractor calculator
+ */
+export default (init) => {
     const sigma = 10.0;
-    var rho = 28.0;
     const beta = 8.0 / 3.0;
     const dt = 0.015;
+
+    if (typeof init == 'undefined') {
+        init = {};
+    }
+    var cart = {
+        'x': typeof init.x != 'undefined' ? init.x : -6.0,
+        'y': typeof init.y != 'undefined' ? init.y : -1.0,
+        'z': typeof init.z != 'undefined' ? init.z : 20.0
+    };
+    var rho = typeof init.rho != 'undefined' ? init.rho : 28.0;
 
     /**
      * Return the result of the last iteration or the initial conditions
@@ -42,10 +49,14 @@ export default (startX, startY, startZ) => {
         'get': get,
 
         /**
-         * @param {number} newRho new value of rho
+         * @param {number} newRho new value of rho (or undefined)
+         * @returns {number} new value of rho
          */
         'rho': (newRho) => {
-            rho = newRho;
+            if (typeof newRho != 'undefined') {
+                rho = newRho;
+            }
+            return rho;
         },
 
         /**

@@ -12,7 +12,7 @@
 export default {
     data() {
         return {
-            'val': 28
+            'val': 12
         };
     }
 };
